@@ -1,0 +1,37 @@
+{
+  "name": "th-smartcard-service",
+  "version": "1.0.0",
+  "description": "1. install nvm --->[dowload nvm click me]() <--- \r 2. click file `install-node.bat`\r 3. click ขวาที่ file `install-windows-build-tools.bat` เลือก Run as ddministrator \r 4. click file `setup-node.bat`",
+  "main": "install_service.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "server": "pm2 start ecosystem.config.js",
+    "clear:server": "pm2 delete all"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srw-upgrade-inter/th-smartcard-service.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srw-upgrade-inter/th-smartcard-service/issues"
+  },
+  "homepage": "https://github.com/srw-upgrade-inter/th-smartcard-service#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "hex2imagebase64": "^1.0.0",
+    "legacy-encoding": "^3.0.0",
+    "node-windows": "^1.0.0-beta.8",
+    "smartcard": "^1.0.46",
+    "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21",
+    "pm2": "^5.2.2"
+  }
+}
