@@ -5,7 +5,7 @@ const { sleep } = require("../helper/sleep");
 
 const EXIST_WHEN_READ_ERROR =
 	process.env.EXIST_WHEN_READ_ERROR &&
-	process.env.EXIST_WHEN_READ_ERROR === "false"
+		process.env.EXIST_WHEN_READ_ERROR === "false"
 		? false
 		: true;
 
@@ -14,7 +14,19 @@ const DEBUG =
 		? true
 		: false;
 
-const DEFAULT_QUERY = ["cid", "name", "dob", "gender"];
+const DEFAULT_QUERY = [
+	"cid",
+	"name",
+	"nameEn",
+	"dob",
+	"gender",
+	"issuer",
+	"issueDate",
+	"expireDate",
+	"address",
+	"photo",
+	"nhso",
+	"laserId",];
 
 const ALL_QUERY = [
 	"cid",
