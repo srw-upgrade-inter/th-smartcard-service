@@ -1,1 +1,1 @@
-npm install
+npm install && npm i -g pm2
