@@ -4,7 +4,7 @@ var Service = require('node-windows').Service;
 var svc = new Service({
     name: 'SmartCard Thai Node Service',
     description: 'SmartCard Thai Service',
-    script: __dirname + '\\smartcard\\index.js'
+    script: __dirname + '\\src\\server.js'
 });
 
 // Listen for the "install" event, which indicates the
