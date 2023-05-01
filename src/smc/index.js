@@ -54,6 +54,7 @@ module.exports.init = (io) => {
 		// console.log(currentDevices);
 		const device = event.device;
 		// console.log(device);
+		io.emit("device-activated", event);
 		console.log(
 			"device-activated =>",
 			`Device '${device}' activated, devices: ${currentDevices}`
@@ -91,6 +92,13 @@ module.exports.init = (io) => {
 					"response-received =>",
 					`Response '${event.response}' received from '${event.card}' in response to '${event.command}'`
 				);
+				io.emit("response-received", {
+					status: 202,
+					description: `Response Received`,
+					data: {
+						message,
+					},
+				});
 			});
 
 			try {
@@ -122,7 +130,7 @@ module.exports.init = (io) => {
 		device.on("card-removed", (event) => {
 			const message = `Card removed from '${event.name}'`;
 			console.log("card-removed =>", message);
-			io.emit("smc-removed", {
+			io.emit("card-removed", {
 				status: 205,
 				description: "Card Removed",
 				data: {
@@ -134,7 +142,7 @@ module.exports.init = (io) => {
 		device.on("error", (event) => {
 			const message = `Incorrect card input'`;
 			console.log("error =>", message);
-			io.emit("smc-incorrect", {
+			io.emit("error", {
 				status: 400,
 				description: "Incorrect card input",
 				data: {
@@ -147,7 +155,7 @@ module.exports.init = (io) => {
 	devices.on("device-deactivated", (event) => {
 		const message = `Device '${event.device}' deactivated, devices: [${event.devices}]`;
 		console.error("device-deactivated =>", message);
-		io.emit("smc-device-deactivated", {
+		io.emit("device-deactivated", {
 			status: 404,
 			description: "Not Found Smartcard Device",
 			data: {
@@ -159,9 +167,9 @@ module.exports.init = (io) => {
 	devices.on("error", (error) => {
 		const message = `${error.error}`;
 		console.error("devics-error =>", message);
-		io.emit("smc-error", {
+		io.emit("error", {
 			status: 404,
-			description: "Not Found Smartcard Device",
+			description: "Incorrect card input",
 			data: {
 				message,
 			},

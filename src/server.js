@@ -27,6 +27,7 @@ io.on("connection", (socket) => {
 		const { query = undefined } = data;
 		console.log(`set-query: ${query}`);
 		smc.setQuery(query);
+		smc.init(io);
 	});
 
 	socket.on("set-all-query", (data = {}) => {
